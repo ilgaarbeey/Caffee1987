@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee 1987 - منوی کافه</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+            color: #FFFFFF;
+        }
+        .menu-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        .menu-container:hover {
+            transform: translateY(-4px);
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .menu-item span:first-child {
+            color: #F8FAFC;
+            font-weight: 500;
+            font-size: 1.15rem;
+        }
+        .menu-item span:last-child {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            font-size: 1.15rem;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #FFFFFF, #D1D5DB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 10;
+        }
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .floating-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+        }
+        .footer-content {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .footer-content a {
+            font-size: 1.2rem;
+            color: #F8FAFC;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: glow 2s ease-in-out infinite;
+        }
+        .footer-content a:hover {
+            color: #D1D5DB;
+        }
+        .footer-content p {
+            font-size: 1rem;
+            color: #D1D5DB;
+            margin-top: 0.5rem;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+        }
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn-Regular.woff2') format('woff2');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <div class="floating-btn" onclick="scrollToSection('hot-drinks')">
+            <i class="fas fa-coffee"></i>
+        </div>
+        <div class="floating-btn" onclick="scrollToSection('cold-drinks')">
+            <i class="fas fa-glass-whiskey"></i>
+        </div>
+        <div class="floating-btn" onclick="scrollToSection('snacks')">
+            <i class="fas fa-utensils"></i>
+        </div>
+    </div>
+
+    <!-- Cafe Name -->
+    <header class="text-center py-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-white">Coffee 1987</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 flex-grow">
+        <!-- Hot Drinks Section -->
+        <section id="hot-drinks" class="mb-12">
+            <div class="menu-container">
+                <h2 class="text-2xl font-semibold text-center">نوشیدنی‌های گرم</h2>
+                <div class="menu-item"><span>آیتم 1</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 2</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 3</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 4</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 5</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 6</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 7</span><span>115</span></div>
+                <div class="menu-item"><span>آیتم 8</span><span>120</span></div>
+                <div class="menu-item"><span>آیتم 9</span><span>125</span></div>
+                <div class="menu-item"><span>آیتم 10</span><span>130</span></div>
+                <div class="menu-item"><span>آیتم 11</span><span>135</span></div>
+                <div class="menu-item"><span>آیتم 12</span><span>140</span></div>
+                <div class="menu-item"><span>آیتم 13</span><span>145</span></div>
+                <div class="menu-item"><span>آیتم 14</span><span>150</span></div>
+                <div class="menu-item"><span>آیتم 15</span><span>50</span></div>
+                <div class="menu-item"><span>آیتم 16</span><span>55</span></div>
+                <div class="menu-item"><span>آیتم 17</span><span>60</span></div>
+                <div class="menu-item"><span>آیتم 18</span><span>65</span></div>
+                <div class="menu-item"><span>آیتم 19</span><span>70</span></div>
+                <div class="menu-item"><span>آیتم 20</span><span>75</span></div>
+                <div class="menu-item"><span>آیتم 21</span><span>80</span></div>
+                <div class="menu-item"><span>آیتم 22</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 23</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 24</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 25</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 26</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 27</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 28</span><span>115</span></div>
+                <div class="menu-item"><span>آیتم 29</span><span>120</span></div>
+                <div class="menu-item"><span>آیتم 30</span><span>125</span></div>
+                <div class="menu-item"><span>آیتم 31</span><span>130</span></div>
+                <div class="menu-item"><span>آیتم 32</span><span>135</span></div>
+                <div class="menu-item"><span>آیتم 33</span><span>140</span></div>
+                <div class="menu-item"><span>آیتم 34</span><span>145</span></div>
+                <div class="menu-item"><span>آیتم 35</span><span>150</span></div>
+                <div class="menu-item"><span>آیتم 36</span><span>50</span></div>
+                <div class="menu-item"><span>آیتم 37</span><span>55</span></div>
+                <div class="menu-item"><span>آیتم 38</span><span>60</span></div>
+                <div class="menu-item"><span>آیتم 39</span><span>65</span></div>
+                <div class="menu-item"><span>آیتم 40</span><span>70</span></div>
+                <div class="menu-item"><span>آیتم 41</span><span>75</span></div>
+                <div class="menu-item"><span>آیتم 42</span><span>80</span></div>
+                <div class="menu-item"><span>آیتم 43</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 44</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 45</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 46</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 47</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 48</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 49</span><span>115</span></div>
+                <div class="menu-item"><span>آیتم 50</span><span>120</span></div>
+                <div class="menu-item"><span>آیتم 51</span><span>125</span></div>
+                <div class="menu-item"><span>آیتم 52</span><span>130</span></div>
+                <div class="menu-item"><span>آیتم 53</span><span>135</span></div>
+                <div class="menu-item"><span>آیتم 54</span><span>140</span></div>
+                <div class="menu-item"><span>آیتم 55</span><span>145</span></div>
+                <div class="menu-item"><span>آیتم 56</span><span>150</span></div>
+                <div class="menu-item"><span>آیتم 57</span><span>50</span></div>
+                <div class="menu-item"><span>آیتم 58</span><span>55</span></div>
+                <div class="menu-item"><span>آیتم 59</span><span>60</span></div>
+                <div class="menu-item"><span>آیتم 60</span><span>65</span></div>
+            </div>
+        </section>
+
+        <!-- Cold Drinks Section -->
+        <section id="cold-drinks" class="mb-12">
+            <div class="menu-container">
+                <h2 class="text-2xl font-semibold text-center">نوشیدنی‌های سرد</h2>
+                <div class="menu-item"><span>آیتم 1</span><span>80</span></div>
+                <div class="menu-item"><span>آیتم 2</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 3</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 4</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 5</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 6</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 7</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 8</span><span>115</span></div>
+                <div class="menu-item"><span>آیتم 9</span><span>120</span></div>
+                <div class="menu-item"><span>آیتم 10</span><span>125</span></div>
+                <div class="menu-item"><span>آیتم 11</span><span>130</span></div>
+                <div class="menu-item"><span>آیتم 12</span><span>80</span></div>
+                <div class="menu-item"><span>آیتم 13</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 14</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 15</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 16</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 17</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 18</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 19</span><span>115</span></div>
+                <div class="menu-item"><span>آیتم 20</span><span>120</span></div>
+            </div>
+        </section>
+
+        <!-- Snacks Section -->
+        <section id="snacks" class="mb-12">
+            <div class="menu-container">
+                <h2 class="text-2xl font-semibold text-center">اسنک‌ها</h2>
+                <div class="menu-item"><span>آیتم 1</span><span>70</span></div>
+                <div class="menu-item"><span>آیتم 2</span><span>75</span></div>
+                <div class="menu-item"><span>آیتم 3</span><span>80</span></div>
+                <div class="menu-item"><span>آیتم 4</span><span>85</span></div>
+                <div class="menu-item"><span>آیتم 5</span><span>90</span></div>
+                <div class="menu-item"><span>آیتم 6</span><span>95</span></div>
+                <div class="menu-item"><span>آیتم 7</span><span>100</span></div>
+                <div class="menu-item"><span>آیتم 8</span><span>105</span></div>
+                <div class="menu-item"><span>آیتم 9</span><span>110</span></div>
+                <div class="menu-item"><span>آیتم 10</span><span>115</span></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with Instagram Link -->
+    <div class="footer-content">
+        <a href="https://www.instagram.com/caffe.1987" target="_blank">caffe.1987</a>
+        <p>مارو در اینستاگرام دنبال بکنید</p>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
